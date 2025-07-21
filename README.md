@@ -10,8 +10,8 @@ Enterprise applications are typically tested at multiple levels, with service-le
 <p align="center">
   <img src="background.png" >
 </p>
-### RQ1 Results
 
+### RQ1 Results
 
 ### RQ2 Results
 
