@@ -5,18 +5,13 @@ Enterprise applications are typically tested at multiple levels, with service-le
 <p align="center">
   <img src="short_prompt.jpg" >
 </p>
-
+In this figure, we show various prompts that we used and the input details and the output format. For each prompt, we provide those details with 1-2 examples to guide LLMs to follow the output format.
 ### Developer Background
 <p align="center">
   <img src="background.png" >
 </p>
-
+These figures are related to the survey that we conducted and the background of the participants
 ### RQ1 Results
 
-### RQ2 Results
-
-
-### RQ4 Results
-
-
-### RQ5 Results
+### RQ
+RQ Results are uploaded with coverage details and generated tests. RQ2 has been put under RQ2.zip.
