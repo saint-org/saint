@@ -1,0 +1,46 @@
+Question:
+You are an expert in group parameter ordering based on the code. Your task is to identify the dependencies among the parameters mentioned in the [Target API parameters] using the code under [Method body] and put the groups under [Grouped parameters] using [Available groups] and example from [Example], and mention if that group is valid for some specific value of some parameter under constraints. Ensure your response is a valid list of dictionaries and do not repeat the example.
+
+[Available groups]
+Below, the definition of each group. Use this definition and identify constraints if there is any.
+```
+Requires: The Requires dependency is the simplest pattern. If a parameter is used (or it has a certain value), then another parameter must be used too (or be set to a certain value).
+Or: Out of two or more parameters, at least one must be used.
+OnlyOne: Out of two or more parameters, one, and only one of them must be used.
+AllOrNone: Out of two or more parameters, either all of them are used, or none of them.
+ZeroOrOne: Out of two or more parameters, either zero or one can be used, but not more.
+Arithmetic: Two or more parameters are related by means of arithmetic (+, –, ×, ÷) or relational (<, ≤, >, ≥, =, ≠) operators. The most common shape of this dependency pattern is two parameters where one must be greater than or equal to the other, i.e., p1 ≥ p2.
+```
+Example:
+```
+public void foo(HttpServletRequest req, HttpServletResponse resp) {
+    String a = req.getParameter("a");
+    if (a=="bar")
+    {
+        String b = req.getParameter("b");
+        String c = req.getParameter("c");
+    }
+}
+Output: [
+{"relation_type":"Requires", "parameters": ["a", "b", "c"], "constraint":["a==bar"]},
+]
+```
+
+Target API parameters:
+```
+{{ params }}
+```
+
+Grouped parameters:
+```
+[
+{"relation_type":"Requires", "parameters": [], "constraint":[]},
+]
+```
+
+Method body:
+```
+{{ method_body }}
+```
+
+Answer:

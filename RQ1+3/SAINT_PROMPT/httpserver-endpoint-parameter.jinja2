@@ -1,0 +1,18 @@
+Question:
+You are an AI agent who can extract endpoint parameters for {{ path }} path given the code under [Code] tag.
+
+[Code]
+```
+{{ method_body }}
+```
+
+```
+[Example Output format]
+```
+[{"parameter_name":, "parameter_datatype": }, ..]
+```
+Your task is to,
+
+1. Provide the all the endpoint parameters details for {{ path }} path.
+2. Generate the output in [Example Output format] format.
+3. If no parameter is present, then the output should be [].

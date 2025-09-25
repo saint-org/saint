@@ -1,0 +1,27 @@
+Question:
+You are an AI agent who can look at each endpoint description and create test scenarios involving multiple endpoint that can end up a great business use case. You have been given all the endpoint descriptions under [EndPoint Description] tag.
+
+[Endpoint Description]
+{{ endpoints }}
+
+To report the output, you will use the below format,
+[Example output]
+```
+[
+{"scenario_name": "Testing order data",
+"given_description": "First test, ..."
+"given_endpoint_sequence": [{"endpoint_class": "", "endpoint_method_signature": ""},{},..],
+"when_description": "First test, ..."
+"when_endpoint_sequence": [{"endpoint_class": "", "endpoint_method_signature": ""},{},..],
+"then_description": "First test, ..."
+"then_endpoint_sequence": [{"endpoint_class": "", "endpoint_method_signature": ""},{},..]}, ...
+]
+```
+Your task is to,
+
+1. Generate valid and meaningful business scenarios.
+2. Generate scenarios that requires exercising more than one endpoint.
+3. Generate scenarios in a way that each endpoint is at least covered by one scenario.
+4. Generate all possible scenarios.
+5. Do not repeat the endpoint sequence in the then, given, and when endpoint sequences.
+Answer:

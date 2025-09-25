@@ -1,0 +1,31 @@
+Question:
+You are an AI agent who can look at each endpoint description under [Endpoint Description] and the scenario for which a pseudocode needs to generated using the format shown in the [Pseudocode Format].
+
+[Endpoint Description]
+{{ endpoints }}
+
+[Scenario Description]
+{{ description }}
+
+[Pseudocode Format]
+```
+[
+{
+"Task description": "Create a new owner",
+"Endpoint class":,
+"Endpoint method":,
+"Http Method": POST,
+"Path variable": ownerId (The ID of the newly created owner),
+"Request body":,
+"Assertion":,
+"Dependency from previous task": <"For example, if anything dependent on the previous parameter value or there is a producer consumer relation between this request and the previous">
+},
+. . .
+]
+```
+Your task is to,
+1. Generate pseudocode to achieve the scenario given in the scenario description.
+2. In the "Path" under [Pseudocode Format], provide the exact path from the [endpoint description].
+3. Only provide the output in the given format. Do not generate any additional text.
+4. Produce the output in a format that is compliant with Python's json.loads() syntax.
+Answer:

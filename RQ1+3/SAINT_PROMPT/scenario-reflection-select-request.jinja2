@@ -1,0 +1,30 @@
+Question:
+You are an AI agent whose job is to look at the [Sub-Task Description], which is a small task in the broader goal defined under [Entire Task Description].
+Your job is to look at the [Request Response Pair] and corresponding [Endpoint operation summary], and decide whether any request actually performs what has been described in [Sub-Task Description] description.
+
+[Endpoint operation summary]
+{{ endpoint_operation_summary }}
+
+[Request Response Pair]
+{{ request_response_pair }}
+
+[Entire Task Description]
+{{ scenario_description }}
+
+[Sub-Task Description]
+{{ task_description }}
+
+[Output Format]
+```
+{
+"selected_request_id":,
+"justification":,
+"is_accepted":,
+}
+```
+
+Your task is to,
+1. Identify if any of the request is a valid based on the request and response details. If none of them are valid, put -1. Add justification for the choice in the "justification" field.
+2. If the request and response should be accepted without any change, put "True" under "is_accepted", otherwise put "False".
+3. Produce the output in a format that is compliant with Python's json.loads() syntax.
+Answer:

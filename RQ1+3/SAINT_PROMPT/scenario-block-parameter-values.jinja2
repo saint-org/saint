@@ -1,0 +1,82 @@
+Question:
+You are an expert parameter sets finder for an API.
+Your task is to go through the [Specific Task description], which is a part of the broader task given under [Scenario Description] and generate requests that can help fulfill the task.
+
+In this process, you have,
+- API details under [Target API]
+{%- if is_ipd %}- Parameters mentioned in [Target API] has dependencies among each other and it is mentioned in [Inter-parameter dependencies]. The definition of each dependency type is given in [Inter-parameter dependencies definition].{%- endif %}
+{%- if is_orm_additional_context %}- The parameters {{ orm_parameter }} is/are of entity type and the details of them has been given under [ORM Datatype Information].{%- endif %}
+- Entire scenario description under [Scenario Description], which the broader goal.
+- Specific task we need to achieve under [Specific Task description].
+- Hints related to [Path Variable] and [Request body].
+
+{%- if ipds|length>0 %}
+[Inter-parameter dependencies]
+```
+{{ ipds }}
+```
+
+[Inter-parameter dependencies definition]
+```
+Requires: The Requires dependency is the simplest pattern. If a parameter is used (or it has a certain value), then another parameter must be used too (or be set to a certain value).
+Or: Out of two or more parameters, at least one must be used.
+OnlyOne: Out of two or more parameters, one, and only one of them must be used.
+AllOrNone: Out of two or more parameters, either all of them are used, or none of them.
+ZeroOrOne: Out of two or more parameters, either zero or one can be used, but not more.
+Arithmetic: Two or more parameters are related by means of arithmetic (+, –, ×, ÷) or relational (<, ≤, >, ≥, =, ≠) operators. The most common shape of this dependency pattern is two parameters where one must be greater than or equal to the other, i.e., p1 ≥ p2.
+```
+{%- endif %}
+
+Target API:
+```
+{
+    "class_name": {{ class_name }},
+    "http_path": {{ http_path }},
+    "parameters": {{ params }}
+}
+```
+
+{%- if is_orm_additional_context %}ORM Datatype Information:
+```
+{{ orm_datatype_code }}
+```{%- endif %}
+
+[Request Body]
+{{ request_body }}
+
+[Path variables]
+{{ path_variable }}
+
+[Entire Scenario]
+{{ scenario_description }}
+
+[Specific Task description]
+{{ task_description }}
+
+{%- if previous_parameter_values|length>0 %}
+{{ previous_parameter_values_str }}
+{%- endif %}
+Fill the dictionary:
+```
+[
+    {{ actual_parameters }},
+...
+]
+```
+
+Instructions:
+1. Analyze the given API information, including the class name, HTTP path, and parameters.
+2. Generate a list of set of parameter names with values.
+3. Create a single request.
+4. Fill the details under [Fill the dictionary]
+
+Example:
+```
+[
+    {"username": "validUser123", "age": 30, "isActive": True}
+]
+```
+
+Ensure your response is a valid list of dictionaries and not provide any method or explanation.
+
+Answer:

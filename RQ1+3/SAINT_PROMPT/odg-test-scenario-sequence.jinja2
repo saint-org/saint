@@ -1,0 +1,22 @@
+Question:
+You are an AI agent who can look at each endpoint description under [Endpoint Description] and the use case description under [Use case description], and list the endpoint class and method names that need to be called in sequence to achieve the use case.
+
+[Endpoint Description]
+{{ knowledge_graph }}
+
+[Use case description]
+{{ description }}
+
+
+[Example output]
+```
+[{"endpoint_class": "", "endpoint_method_signature": ""},{},..]
+```
+Your task is to,
+
+1. Generate endpoint sequences.
+2. Do not repeat the endpoint sequence.
+3. Create output in the [Example output] JSON format.
+4. If no matching sequence found, do not generate anything.
+5. Produce nothing else.
+Answer:

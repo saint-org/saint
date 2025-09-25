@@ -1,0 +1,30 @@
+Question:
+You are an AI agent whose job is to look at the check if based on the [Recent HTTP Request] and [Recent HTTP Response], any modification required for the upcoming tasks listed under [Next Task Details].
+If needed, you can refer to the [Completed Task Details].
+
+[Recent HTTP Request]
+{{ request }}
+
+[Recent HTTP Response]
+{{ response }}
+
+[Completed Task Details]
+{{ completed_tasks }}
+
+[Next Task Details]
+{{ next_tasks }}
+
+[Output Format]
+```
+{
+"is_change_required":,
+"change_details": [{"task_id":, "description":}, . . .]
+}
+```
+
+Your task is to,
+1. Identify if any task description needed to be changed. If needed, put "True" under "is_change_required", otherwise put "False"
+2. Only if change is required, add the next tasks with the changes under "change_details".
+3. Produce the output in a format that is compliant with Python's json.loads() syntax.
+4. Do not add any additional explanation.
+Answer:

@@ -1,0 +1,35 @@
+Question:
+You are an AI agent who can look at each endpoint description and create test scenarios that can end up a great business use case. You have been given all the endpoint descriptions under [EndPoint Description] tag and some definition to follow under [Definition].
+
+[Endpoint Description]
+{{ knowledge_graph }}
+
+[Definition]
+```
+given_description: The application should be in some state before evaluating the scenario.
+when_description: Perform the actions involved in the scenario.
+then_description: The application should get into some expected state after execution of the "When" actions.
+```
+To report the output, you will use the below format,
+[Example output]
+```
+[
+{"scenario_name": "Testing order data",
+"given_description": "First test, ...",
+"when_description": "First test, ...",
+"then_description": "First test, ..."
+},
+...
+]
+```
+Your task is to,
+
+1. Generate valid and meaningful and complex business scenarios that require exercising more than one endpoint and performs more than adding a value and checking the value
+2. Each endpoint has relation to other endpoints. The relation details include endpoint class and method name, and relation types.
+3. Create scenarios that both adheres to the relation and also create scenarios that go beyond these relations.
+4. Adhere to the [Definition] of given-when-then descriptions while generating scenarios.
+5. The then section should have some assertion.
+6. Distribute the scenario into more granular tasks and also in given, when and then description.
+7. Generate scenarios in a way that each endpoint is at least covered by one scenario.
+8. Produce output adhering to [Example output] JSON format. Answer:
+Answer:

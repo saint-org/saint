@@ -1,0 +1,72 @@
+Question:
+You are an expert AI agent that can generate a sequence of parameter values given all the endpoint details under [Given scenario endpoint details] and [When scenario endpoint details] based on the test scenario given under [Test Scenario].{% if is_previous_success_requests %} There are some examples of parameter values from previous successful http requests.{% endif %}
+
+[Given scenario endpoint details]
+Given scenario description: {{ given_test_scenario }}
+{% for endpoint_detail in given_endpoint_details %}
+[EndPoint #{{ loop.index }}]
+Endpoint class name:  {{endpoint_detail["class_name"]}}
+Endpoint method name: {{endpoint_detail["method_name"]}}
+{%- if endpoint_detail["parameter_details"]|length>0  %}Endpoint parameter details:
+{{ endpoint_detail["parameter_details"] }}{%- endif %}
+Endpoint code:
+```
+{{ endpoint_detail["code"] }}
+```
+{% endfor %}
+
+[When scenario endpoint details]
+When scenario description: {{ when_test_scenario }}
+{% for endpoint_detail in when_endpoint_details %}
+[EndPoint #{{ loop.index }}]
+Endpoint class name:  {{endpoint_detail["class_name"]}}
+Endpoint method name: {{endpoint_detail["method_name"]}}
+{%- if endpoint_detail["parameter_details"]|length>0  %}Endpoint parameter details:
+{{ endpoint_detail["parameter_details"] }}{%- endif %}
+Endpoint code:
+```
+{{ endpoint_detail["code"] }}
+```
+{% endfor %}
+
+[Then scenario endpoint details]
+Theb scenario description: {{ then_test_scenario }}
+{% for endpoint_detail in then_endpoint_details %}
+[EndPoint #{{ loop.index }}]
+Endpoint class name:  {{endpoint_detail["class_name"]}}
+Endpoint method name: {{endpoint_detail["method_name"]}}
+{%- if endpoint_detail["parameter_details"]|length>0  %}Endpoint parameter details:
+{{ endpoint_detail["parameter_details"] }}{%- endif %}
+Endpoint code:
+```
+{{ endpoint_detail["code"] }}
+```
+{% endfor %}
+
+[Test Scenario]
+Given: {{ given_test_scenario }}
+When: {{ when_test_scenario }}
+Then: {{ then_test_scenario }}
+
+{% if is_previous_success_requests %}[Previous successful requests]
+```
+{{ previous_success_requests }}
+```
+{% endif %}
+
+[Output example]
+```
+{
+    "sequence 1": {
+    "given_test_scenario": [{"endpoint_class_name": "foo", "endpoint_method_name": "bar", "parameters": {"username": "validUser123", "age": 30, "isActive": True}}, {"endpoint_class_name": "baz", "endpoint_method_name": "tup", "parameters": {"amount": 1200}}, ...}],
+    "when_test_scenario": [{"endpoint_class_name": "foo", "endpoint_method_name": "bar", "parameters": {"username": "validUser123", "age": 30, "isActive": True}}, {"endpoint_class_name": "baz", "endpoint_method_name": "tup", "parameters": {"amount": 1200}}, ...}],
+    "then_test_scenario": [{"endpoint_class_name": "foo", "endpoint_method_name": "bar", "parameters": {"username": "validUser123", "age": 30, "isActive": True}}, {"endpoint_class_name": "baz", "endpoint_method_name": "tup", "parameters": {"amount": 1200}}, ...}]},
+    "sequence 2": ...,
+    "sequence 3": ...,
+    "sequence 4": ...
+}
+```
+
+Your task is to generate a sequence of parameter values involving endpoints given and produce the output given the format in [Output example]. Generate multiple sequences so that there is a better chance of getting successful requests.
+
+Answer:

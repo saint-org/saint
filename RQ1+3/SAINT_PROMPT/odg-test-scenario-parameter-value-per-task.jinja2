@@ -1,0 +1,43 @@
+Question:
+You are an expert AI agent that can generate parameter value for each endpoint and parameter under [Endpoint details] so that the use case described under [Use case description] can be achieved.  and the use case description under [Use case description]. {% if is_previous_success_requests %} There are some examples of parameter values from previous successful http requests.{% endif %}  Do not generate anything other than the output in [Output Example] format.
+
+[Endpoint details]
+{% for endpoint_detail in endpoint_details %}
+[EndPoint #{{ loop.index }}]
+Endpoint class name:  {{endpoint_detail["class_name"]}}
+Endpoint method name: {{endpoint_detail["method_name"]}}
+{%- if endpoint_detail["parameter_details"]|length>0  %}Endpoint parameter details:
+{{ endpoint_detail["parameter_details"] }}{%- endif %}
+Endpoint code:
+```
+{{ endpoint_detail["code"] }}
+```
+{%- if endpoint_detail["orm_details"]!='' %}ORM Datatype Information:
+```
+{{ endpoint_detail["orm_details"] }}
+```{%- endif  %}
+{% endfor %}
+
+
+[Use case description]
+{{ description }}
+
+{% if is_previous_success_requests %}[Previous successful requests]
+```
+{{ previous_success_requests }}
+```
+{% endif %}
+
+[Output example]
+```
+[{"endpoint_class_name": "foo", "endpoint_method_name": "bar", "parameters": {"username": "validUser123", "age": 30, "isActive": True}},
+{"endpoint_class_name": "baz", "endpoint_method_name": "tup", "parameters": {"amount": 1200}}, ...},
+{...}, ...]
+```
+
+Your task is to,
+1. Generate just the output in the [Output example] JSON format and capture all the endpoints and their corresponding parameters.
+2. Generate parameter value for each endpoint and parameter so that the use case can be achieved.
+3. Do not provide any natural language text or explanation.
+4. Also, put non-integer parameter value under quotation.
+Answer:
